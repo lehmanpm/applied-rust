@@ -27,6 +27,22 @@ pub fn read_stdin() -> String {
     _read_stdin(&mut reader)
 }
 
+/// This function reads a line from a BufRead and returns it as a String.
+/// It will panic if it fails to read a line with a message "Failed to read input line".
+/// # Examples:
+/// ```
+/// use cli_utils::_read_stdin;
+/// use std::io::Cursor;
+/// let input = "Hello, world!\n";
+/// let mut reader = Cursor::new(input);
+/// let output = _read_stdin(&mut reader);
+/// ```
+/// # Panics:
+/// The `_read_stdin` function will panic if it fails to read a line with a message "Failed to read input line".
+/// # Safety:
+/// This function is unsafe because it uses unsafe code to read from a BufRead.
+/// It is marked as unsafe because it is not safe to call this function directly.
+/// It is only meant to be used by the `read_stdin` function.
 fn _read_stdin<R: BufRead>(reader: &mut R) -> String {
     let mut line = String::new();
     reader

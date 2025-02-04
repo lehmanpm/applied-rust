@@ -24,3 +24,9 @@ bump: ## Bump the version number
 	updated_version=$$(cargo pkgid | cut -d# -f2 | sed -E "s/([0-9]+\.[0-9]+\.[0-9]+)$$/$$version/"); \
 	sed -i -E "s/^version = .*/version = \"$$updated_version\"/" Cargo.toml
 	@echo "New version is $(shell cargo pkgid | cut -d# -f2)"%
+
+test: ## Test the project using cargo
+	cargo test
+
+doc: ## Generate the documentation using cargo
+	cargo doc --no-deps --open
